@@ -1,0 +1,146 @@
+.capabilities {
+    padding: 3rem 0 0;
+    background: rgba(15, 15, 20, 0.85);
+}
+
+/* Header row — label + title inline */
+.cap-header-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.capabilities-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.1;
+}
+
+.capabilities-title .accent {
+    color: var(--accent);
+}
+
+/* Compact bento grid — 3 columns, tight */
+.cap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.cap-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--void);
+    border: 1px solid var(--border);
+    transition: all 0.4s var(--ease-out);
+}
+
+.cap-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+}
+
+.cap-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+}
+
+.cap-card:hover::before {
+    transform: scaleX(1);
+}
+
+.cap-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    transition: all 0.3s var(--ease-out);
+}
+
+.cap-card:hover .cap-icon {
+    background: var(--accent);
+    color: var(--void);
+}
+
+.cap-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cap-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.cap-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Tool curved loop customization */
+.capabilities-loop-text {
+    fill: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 4rem;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+}
+
+.curved-loop-jacket {
+    margin: 1rem 0 0;
+    /* Fade edges */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+@media (max-width: 768px) {
+    .capabilities-loop-text {
+        font-size: 2.5rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .capabilities {
+        padding: 2rem 0;
+    }
+
+    .cap-header-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cap-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cap-card {
+        padding: 1rem 1.25rem;
+    }
+}
